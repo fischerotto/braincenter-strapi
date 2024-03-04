@@ -78,6 +78,7 @@ export interface PageComponentsHomeAboutSection extends Schema.Component {
     aboutHeading: Attribute.Component<'section-heading.section-heading'>;
     FeatureLine: Attribute.Component<'page-components.feature-line', true>;
     CtaSection: Attribute.Component<'menu.menu-button'>;
+    image: Attribute.Media;
   };
 }
 
@@ -129,6 +130,31 @@ export interface PageComponentsHomeVmvSection extends Schema.Component {
   attributes: {
     heading: Attribute.Component<'section-heading.section-heading'>;
     cards: Attribute.Component<'vision-mission-values.vmv-card', true>;
+  };
+}
+
+export interface PageComponentsNfTechnologyCard extends Schema.Component {
+  collectionName: 'components_page_components_nf_technology_cards';
+  info: {
+    displayName: 'NFTechnologyCard';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    icon: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface PageComponentsNfTechnologySection extends Schema.Component {
+  collectionName: 'components_page_components_nf_technology_sections';
+  info: {
+    displayName: 'NFTechnologySection';
+    icon: 'manyToMany';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.Component<'section-heading.section-heading'>;
+    cards: Attribute.Component<'page-components.nf-technology-card', true>;
   };
 }
 
@@ -185,6 +211,8 @@ declare module '@strapi/types' {
       'page-components.home-header': PageComponentsHomeHeader;
       'page-components.home-packages-section': PageComponentsHomePackagesSection;
       'page-components.home-vmv-section': PageComponentsHomeVmvSection;
+      'page-components.nf-technology-card': PageComponentsNfTechnologyCard;
+      'page-components.nf-technology-section': PageComponentsNfTechnologySection;
       'page-components.package-card': PageComponentsPackageCard;
       'section-heading.section-heading': SectionHeadingSectionHeading;
       'vision-mission-values.vmv-card': VisionMissionValuesVmvCard;

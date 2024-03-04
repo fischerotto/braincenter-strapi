@@ -26,6 +26,13 @@
       "type": "component",
       "repeatable": false,
       "component": "menu.menu-button"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -774,6 +774,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     singularName: 'home-page';
     pluralName: 'home-pages';
     displayName: 'HomePage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -791,7 +792,8 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         'page-components.home-vmv-section',
         'page-components.home-choose-us-section',
         'page-components.home-packages-section',
-        'page-components.contact-section'
+        'page-components.contact-section',
+        'page-components.nf-technology-section'
       ]
     > &
       Attribute.SetPluginOptions<{
