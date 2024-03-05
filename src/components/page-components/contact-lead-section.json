@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_page_components_contact_lead_sections",
+  "info": {
+    "displayName": "ContactLeadSection",
+    "icon": "phone"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "text"
+    },
+    "cards": {
+      "displayName": "InfoCard",
+      "type": "component",
+      "repeatable": true,
+      "component": "page-components.info-card"
+    }
+  }
+}

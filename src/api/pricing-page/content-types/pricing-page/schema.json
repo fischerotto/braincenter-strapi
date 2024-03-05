@@ -1,11 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "home_pages",
+  "collectionName": "pricing_pages",
   "info": {
-    "singularName": "home-page",
-    "pluralName": "home-pages",
-    "displayName": "HomePage",
-    "description": ""
+    "singularName": "pricing-page",
+    "pluralName": "pricing-pages",
+    "displayName": "PricingPage"
   },
   "options": {
     "draftAndPublish": false
@@ -16,7 +15,7 @@
     }
   },
   "attributes": {
-    "PageContent": {
+    "pageContent": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -24,13 +23,10 @@
       },
       "type": "dynamiczone",
       "components": [
-        "home-page-components.home-header",
-        "home-page-components.home-about-section",
-        "home-page-components.home-vmv-section",
-        "home-page-components.home-choose-us-section",
+        "section-heading.section-heading",
         "page-components.home-packages-section",
         "page-components.contact-section",
-        "page-components.nf-technology-section"
+        "page-components.accordion-section"
       ]
     }
   }

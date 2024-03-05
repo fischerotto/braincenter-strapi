@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_page_components_offers_sections",
+  "info": {
+    "displayName": "OffersSection",
+    "icon": "handHeart"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section-heading.section-heading"
+    },
+    "cards": {
+      "displayName": "OfferCard",
+      "type": "component",
+      "repeatable": true,
+      "component": "page-components.offer-card"
+    }
+  }
+}

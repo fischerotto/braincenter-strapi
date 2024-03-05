@@ -768,6 +768,106 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Schema.SingleType {
+  collectionName: 'about_pages';
+  info: {
+    singularName: 'about-page';
+    pluralName: 'about-pages';
+    displayName: 'AboutPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    pageSections: Attribute.DynamicZone<
+      [
+        'page-components.contact-section',
+        'page-components.nf-technology-section',
+        'about-page-components.tech-section',
+        'about-page-components.review',
+        'about-page-components.about-section',
+        'section-heading.section-heading'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::about-page.about-page',
+      'oneToMany',
+      'api::about-page.about-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiContactPageContactPage extends Schema.SingleType {
+  collectionName: 'contact_pages';
+  info: {
+    singularName: 'contact-page';
+    pluralName: 'contact-pages';
+    displayName: 'ContactPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    pageContent: Attribute.DynamicZone<['section-heading.section-heading']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::contact-page.contact-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomePageHomePage extends Schema.SingleType {
   collectionName: 'home_pages';
   info: {
@@ -787,10 +887,10 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   attributes: {
     PageContent: Attribute.DynamicZone<
       [
-        'page-components.home-header',
-        'page-components.home-about-section',
-        'page-components.home-vmv-section',
-        'page-components.home-choose-us-section',
+        'home-page-components.home-header',
+        'home-page-components.home-about-section',
+        'home-page-components.home-vmv-section',
+        'home-page-components.home-choose-us-section',
         'page-components.home-packages-section',
         'page-components.contact-section',
         'page-components.nf-technology-section'
@@ -871,12 +971,64 @@ export interface ApiMainMenuMainMenu extends Schema.SingleType {
   };
 }
 
-export interface ApiPackageCardPackageCard extends Schema.CollectionType {
-  collectionName: 'package_cards';
+export interface ApiPricingPagePricingPage extends Schema.SingleType {
+  collectionName: 'pricing_pages';
   info: {
-    singularName: 'package-card';
-    pluralName: 'package-cards';
-    displayName: 'PackageCard';
+    singularName: 'pricing-page';
+    pluralName: 'pricing-pages';
+    displayName: 'PricingPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    pageContent: Attribute.DynamicZone<
+      [
+        'section-heading.section-heading',
+        'page-components.home-packages-section',
+        'page-components.contact-section',
+        'page-components.accordion-section'
+      ]
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pricing-page.pricing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pricing-page.pricing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::pricing-page.pricing-page',
+      'oneToMany',
+      'api::pricing-page.pricing-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiServicesPageServicesPage extends Schema.SingleType {
+  collectionName: 'services_pages';
+  info: {
+    singularName: 'services-page';
+    pluralName: 'services-pages';
+    displayName: 'ServicesPage';
     description: '';
   };
   options: {
@@ -888,30 +1040,14 @@ export interface ApiPackageCardPackageCard extends Schema.CollectionType {
     };
   };
   attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    description: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    price: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMax<{
-        min: 1;
-      }> &
-      Attribute.DefaultTo<1>;
-    image: Attribute.Media &
+    pageContent: Attribute.DynamicZone<
+      [
+        'section-heading.section-heading',
+        'about-page-components.about-section',
+        'page-components.contact-section',
+        'page-components.offers-section'
+      ]
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -920,73 +1056,21 @@ export interface ApiPackageCardPackageCard extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::package-card.package-card',
+      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::package-card.package-card',
+      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     localizations: Attribute.Relation<
-      'api::package-card.package-card',
+      'api::services-page.services-page',
       'oneToMany',
-      'api::package-card.package-card'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiVisionMissionValuesSectionVisionMissionValuesSection
-  extends Schema.SingleType {
-  collectionName: 'vision_mission_values_sections';
-  info: {
-    singularName: 'vision-mission-values-section';
-    pluralName: 'vision-mission-values-sections';
-    displayName: 'VisionMissionValuesSection';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    heading: Attribute.Component<'section-heading.section-heading'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Cards: Attribute.Component<'vision-mission-values.vmv-card', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::vision-mission-values-section.vision-mission-values-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::vision-mission-values-section.vision-mission-values-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::vision-mission-values-section.vision-mission-values-section',
-      'oneToMany',
-      'api::vision-mission-values-section.vision-mission-values-section'
+      'api::services-page.services-page'
     >;
     locale: Attribute.String;
   };
@@ -1010,10 +1094,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
-      'api::package-card.package-card': ApiPackageCardPackageCard;
-      'api::vision-mission-values-section.vision-mission-values-section': ApiVisionMissionValuesSectionVisionMissionValuesSection;
+      'api::pricing-page.pricing-page': ApiPricingPagePricingPage;
+      'api::services-page.services-page': ApiServicesPageServicesPage;
     }
   }
 }

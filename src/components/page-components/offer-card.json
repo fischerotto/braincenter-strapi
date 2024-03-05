@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_page_components_offer_cards",
+  "info": {
+    "displayName": "OfferCard",
+    "icon": "magic"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "menu.menu-button"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
