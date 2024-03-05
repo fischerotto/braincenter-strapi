@@ -32,6 +32,7 @@ export interface PageComponentsChooseUsCard extends Schema.Component {
   info: {
     displayName: 'ChooseUsCard';
     icon: 'cast';
+    description: '';
   };
   attributes: {
     icon: Attribute.Media;
@@ -87,9 +88,10 @@ export interface PageComponentsHomeChooseUsSection extends Schema.Component {
   info: {
     displayName: 'HomeChooseUsSection';
     icon: 'layout';
+    description: '';
   };
   attributes: {
-    chooseus: Attribute.Component<'section-heading.section-heading', true>;
+    chooseus: Attribute.Component<'section-heading.section-heading'>;
     ctaSection: Attribute.Component<'menu.menu-button', true>;
     cards: Attribute.Component<'page-components.choose-us-card', true>;
   };
@@ -163,12 +165,14 @@ export interface PageComponentsPackageCard extends Schema.Component {
   info: {
     displayName: 'PackageCard';
     icon: 'grid';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     features: Attribute.Component<'page-components.feature-line', true>;
     cta: Attribute.Component<'menu.menu-button'>;
     featured: Attribute.Boolean;
+    price: Attribute.Float & Attribute.Required;
   };
 }
 
