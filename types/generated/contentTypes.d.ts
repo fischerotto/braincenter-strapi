@@ -791,8 +791,7 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
         'page-components.nf-technology-section',
         'about-page-components.tech-section',
         'about-page-components.review',
-        'about-page-components.about-section',
-        'section-heading.section-heading'
+        'about-page-components.about-section'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1122,7 +1121,6 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     singularName: 'home-page';
     pluralName: 'home-pages';
     displayName: 'HomePage';
-    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1133,15 +1131,15 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     };
   };
   attributes: {
-    PageContent: Attribute.DynamicZone<
+    pageContent: Attribute.DynamicZone<
       [
         'home-page-components.home-header',
         'home-page-components.home-about-section',
         'home-page-components.home-vmv-section',
         'home-page-components.home-choose-us-section',
         'page-components.home-packages-section',
-        'page-components.contact-section',
-        'page-components.nf-technology-section'
+        'page-components.nf-technology-section',
+        'page-components.contact-section'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1291,6 +1289,78 @@ export interface ApiOfferOffer extends Schema.CollectionType {
       'api::offer.offer',
       'oneToMany',
       'api::offer.offer'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPricePackagePricePackage extends Schema.CollectionType {
+  collectionName: 'price_packages';
+  info: {
+    singularName: 'price-package';
+    pluralName: 'price-packages';
+    displayName: 'PricePackage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    features: Attribute.Component<'page-components.feature-line', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta: Attribute.Component<'menu.menu-button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    featured: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    price: Attribute.Float &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::price-package.price-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::price-package.price-package',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::price-package.price-package',
+      'oneToMany',
+      'api::price-package.price-package'
     >;
     locale: Attribute.String;
   };
@@ -1659,6 +1729,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
       'api::offer.offer': ApiOfferOffer;
+      'api::price-package.price-package': ApiPricePackagePricePackage;
       'api::pricing-page.pricing-page': ApiPricingPagePricingPage;
       'api::privacy-policy-page.privacy-policy-page': ApiPrivacyPolicyPagePrivacyPolicyPage;
       'api::services-page.services-page': ApiServicesPageServicesPage;

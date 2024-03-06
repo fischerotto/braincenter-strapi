@@ -69,11 +69,10 @@ export interface HomePageComponentsHomeChooseUsSection
 }
 
 export interface HomePageComponentsHomeHeader extends Schema.Component {
-  collectionName: 'components_page_components_home_headers';
+  collectionName: 'components_home_page_components_home_headers';
   info: {
     displayName: 'HomeHeader';
-    icon: 'calendar';
-    description: '';
+    icon: 'alien';
   };
   attributes: {
     SectionHeading: Attribute.Component<'section-heading.section-heading'>;
@@ -205,10 +204,10 @@ export interface PageComponentsHomePackagesSection extends Schema.Component {
   info: {
     displayName: 'HomePackagesSection';
     icon: 'cube';
+    description: '';
   };
   attributes: {
     heading: Attribute.Component<'section-heading.section-heading'>;
-    cards: Attribute.Component<'page-components.package-card', true>;
   };
 }
 

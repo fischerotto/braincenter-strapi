@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_page_components_home_headers",
+  "collectionName": "components_home_page_components_home_headers",
   "info": {
     "displayName": "HomeHeader",
-    "icon": "calendar",
-    "description": ""
+    "icon": "alien"
   },
   "options": {},
   "attributes": {

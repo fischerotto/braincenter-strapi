@@ -4,8 +4,7 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "HomePage",
-    "description": ""
+    "displayName": "HomePage"
   },
   "options": {
     "draftAndPublish": false
@@ -16,7 +15,7 @@
     }
   },
   "attributes": {
-    "PageContent": {
+    "pageContent": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -29,8 +28,8 @@
         "home-page-components.home-vmv-section",
         "home-page-components.home-choose-us-section",
         "page-components.home-packages-section",
-        "page-components.contact-section",
-        "page-components.nf-technology-section"
+        "page-components.nf-technology-section",
+        "page-components.contact-section"
       ]
     }
   }

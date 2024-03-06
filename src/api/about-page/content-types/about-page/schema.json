@@ -28,8 +28,7 @@
         "page-components.nf-technology-section",
         "about-page-components.tech-section",
         "about-page-components.review",
-        "about-page-components.about-section",
-        "section-heading.section-heading"
+        "about-page-components.about-section"
       ]
     }
   }
