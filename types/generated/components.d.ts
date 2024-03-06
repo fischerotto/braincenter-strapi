@@ -250,29 +250,15 @@ export interface PageComponentsNfTechnologySection extends Schema.Component {
   };
 }
 
-export interface PageComponentsOfferCard extends Schema.Component {
-  collectionName: 'components_page_components_offer_cards';
-  info: {
-    displayName: 'OfferCard';
-    icon: 'magic';
-  };
-  attributes: {
-    title: Attribute.String;
-    lead: Attribute.Text;
-    cta: Attribute.Component<'menu.menu-button'>;
-    image: Attribute.Media;
-  };
-}
-
 export interface PageComponentsOffersSection extends Schema.Component {
   collectionName: 'components_page_components_offers_sections';
   info: {
     displayName: 'OffersSection';
     icon: 'handHeart';
+    description: '';
   };
   attributes: {
     heading: Attribute.Component<'section-heading.section-heading'>;
-    cards: Attribute.Component<'page-components.offer-card', true>;
   };
 }
 
@@ -370,7 +356,6 @@ declare module '@strapi/types' {
       'page-components.info-card': PageComponentsInfoCard;
       'page-components.nf-technology-card': PageComponentsNfTechnologyCard;
       'page-components.nf-technology-section': PageComponentsNfTechnologySection;
-      'page-components.offer-card': PageComponentsOfferCard;
       'page-components.offers-section': PageComponentsOffersSection;
       'page-components.package-card': PageComponentsPackageCard;
       'page-components.tech-card': PageComponentsTechCard;
