@@ -166,6 +166,7 @@ export interface PageComponentsContactLeadSection extends Schema.Component {
   info: {
     displayName: 'ContactLeadSection';
     icon: 'phone';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
@@ -216,11 +217,13 @@ export interface PageComponentsInfoCard extends Schema.Component {
   info: {
     displayName: 'InfoCard';
     icon: 'information';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     icon: Attribute.Media;
     content: Attribute.Text & Attribute.Required;
+    type: Attribute.Enumeration<['phone', 'email', 'address']>;
   };
 }
 
