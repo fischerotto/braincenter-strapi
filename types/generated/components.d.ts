@@ -221,7 +221,6 @@ export interface PageComponentsInfoCard extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    icon: Attribute.Media;
     content: Attribute.Text & Attribute.Required;
     type: Attribute.Enumeration<['phone', 'email', 'address']>;
   };
