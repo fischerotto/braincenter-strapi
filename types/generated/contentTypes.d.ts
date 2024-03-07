@@ -791,7 +791,8 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
         'page-components.nf-technology-section',
         'about-page-components.tech-section',
         'about-page-components.review',
-        'about-page-components.about-section'
+        'about-page-components.about-section',
+        'section-heading.section-heading'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -989,6 +990,12 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::blog-post.blog-post', 'title'> &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
