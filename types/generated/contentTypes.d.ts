@@ -1031,6 +1031,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
     singularName: 'contact-page';
     pluralName: 'contact-pages';
     displayName: 'ContactPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1041,7 +1042,12 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
     };
   };
   attributes: {
-    pageContent: Attribute.DynamicZone<['section-heading.section-heading']> &
+    pageContent: Attribute.DynamicZone<
+      [
+        'section-heading.section-heading',
+        'page-components.contact-lead-section'
+      ]
+    > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

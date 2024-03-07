@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact-page",
     "pluralName": "contact-pages",
-    "displayName": "ContactPage"
+    "displayName": "ContactPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -23,7 +24,8 @@
       },
       "type": "dynamiczone",
       "components": [
-        "section-heading.section-heading"
+        "section-heading.section-heading",
+        "page-components.contact-lead-section"
       ]
     }
   }
