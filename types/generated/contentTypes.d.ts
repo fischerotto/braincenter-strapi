@@ -1236,6 +1236,7 @@ export interface ApiOfferOffer extends Schema.CollectionType {
     singularName: 'offer';
     pluralName: 'offers';
     displayName: 'Offer';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1278,6 +1279,12 @@ export interface ApiOfferOffer extends Schema.CollectionType {
         };
       }>;
     slug: Attribute.UID<'api::offer.offer', 'title'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    type: Attribute.Enumeration<['left-oriented', 'right-oriented']> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
