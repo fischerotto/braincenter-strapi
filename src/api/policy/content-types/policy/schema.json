@@ -1,10 +1,10 @@
 {
-  "kind": "singleType",
-  "collectionName": "privacy_policy_pages",
+  "kind": "collectionType",
+  "collectionName": "policies",
   "info": {
-    "singularName": "privacy-policy-page",
-    "pluralName": "privacy-policy-pages",
-    "displayName": "PrivacyPolicyPage",
+    "singularName": "policy",
+    "pluralName": "policies",
+    "displayName": "Policy",
     "description": ""
   },
   "options": {
@@ -16,33 +16,31 @@
     }
   },
   "attributes": {
-    "heading": {
-      "type": "component",
-      "repeatable": false,
+    "title": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "section-heading.section-heading"
+      "type": "string"
     },
-    "content": {
+    "url": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "richtext"
+      "type": "string"
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
+    "showInCopyrightSection": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.seo"
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

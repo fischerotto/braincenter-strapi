@@ -4,7 +4,8 @@
   "info": {
     "singularName": "terms-and-conditions-page",
     "pluralName": "terms-and-conditions-pages",
-    "displayName": "TermsAndConditionsPage"
+    "displayName": "TermsAndConditionsPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -33,6 +34,16 @@
       },
       "type": "richtext",
       "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }

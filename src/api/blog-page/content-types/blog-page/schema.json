@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog-page",
     "pluralName": "blog-pages",
-    "displayName": "BlogPage"
+    "displayName": "BlogPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -26,6 +27,16 @@
         "section-heading.section-heading",
         "page-components.contact-section"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }

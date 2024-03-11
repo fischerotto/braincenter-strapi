@@ -800,6 +800,12 @@ export interface ApiAboutPageAboutPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -888,6 +894,7 @@ export interface ApiBlogPageBlogPage extends Schema.SingleType {
     singularName: 'blog-page';
     pluralName: 'blog-pages';
     displayName: 'BlogPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -901,6 +908,12 @@ export interface ApiBlogPageBlogPage extends Schema.SingleType {
     pageContent: Attribute.DynamicZone<
       ['section-heading.section-heading', 'page-components.contact-section']
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1053,6 +1066,12 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1082,6 +1101,7 @@ export interface ApiCookiePolicyPageCookiePolicyPage extends Schema.SingleType {
     singularName: 'cookie-policy-page';
     pluralName: 'cookie-policy-pages';
     displayName: 'CookiePolicyPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1100,6 +1120,12 @@ export interface ApiCookiePolicyPageCookiePolicyPage extends Schema.SingleType {
       }>;
     content: Attribute.RichText &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1128,12 +1154,76 @@ export interface ApiCookiePolicyPageCookiePolicyPage extends Schema.SingleType {
   };
 }
 
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    companySection: Attribute.Component<'section-heading.section-heading'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    pagesTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    policiesTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    contactTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::footer.footer'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiHomePageHomePage extends Schema.SingleType {
   collectionName: 'home_pages';
   info: {
     singularName: 'home-page';
     pluralName: 'home-pages';
     displayName: 'HomePage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1155,6 +1245,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
         'page-components.contact-section'
       ]
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1290,6 +1386,12 @@ export interface ApiOfferOffer extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1309,6 +1411,66 @@ export interface ApiOfferOffer extends Schema.CollectionType {
       'api::offer.offer',
       'oneToMany',
       'api::offer.offer'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiPolicyPolicy extends Schema.CollectionType {
+  collectionName: 'policies';
+  info: {
+    singularName: 'policy';
+    pluralName: 'policies';
+    displayName: 'Policy';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    showInCopyrightSection: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::policy.policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::policy.policy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::policy.policy',
+      'oneToMany',
+      'api::policy.policy'
     >;
     locale: Attribute.String;
   };
@@ -1392,6 +1554,7 @@ export interface ApiPricingPagePricingPage extends Schema.SingleType {
     singularName: 'pricing-page';
     pluralName: 'pricing-pages';
     displayName: 'PricingPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1410,6 +1573,12 @@ export interface ApiPricingPagePricingPage extends Schema.SingleType {
         'page-components.accordion-section'
       ]
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1445,6 +1614,7 @@ export interface ApiPrivacyPolicyPagePrivacyPolicyPage
     singularName: 'privacy-policy-page';
     pluralName: 'privacy-policy-pages';
     displayName: 'PrivacyPolicyPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1462,6 +1632,12 @@ export interface ApiPrivacyPolicyPagePrivacyPolicyPage
         };
       }>;
     content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1520,6 +1696,12 @@ export interface ApiServicesPageServicesPage extends Schema.SingleType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1550,6 +1732,7 @@ export interface ApiTermsAndConditionsPageTermsAndConditionsPage
     singularName: 'terms-and-conditions-page';
     pluralName: 'terms-and-conditions-pages';
     displayName: 'TermsAndConditionsPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1568,6 +1751,12 @@ export interface ApiTermsAndConditionsPageTermsAndConditionsPage
       }>;
     content: Attribute.RichText &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1651,6 +1840,12 @@ export interface ApiTreatmentTreatment extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1681,6 +1876,7 @@ export interface ApiTreatmentPageTreatmentPage extends Schema.SingleType {
     singularName: 'treatment-page';
     pluralName: 'treatment-pages';
     displayName: 'TreatmentPage';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1694,6 +1890,12 @@ export interface ApiTreatmentPageTreatmentPage extends Schema.SingleType {
     pageContent: Attribute.DynamicZone<
       ['section-heading.section-heading', 'page-components.contact-section']
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1746,9 +1948,11 @@ declare module '@strapi/types' {
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::cookie-policy-page.cookie-policy-page': ApiCookiePolicyPageCookiePolicyPage;
+      'api::footer.footer': ApiFooterFooter;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
       'api::offer.offer': ApiOfferOffer;
+      'api::policy.policy': ApiPolicyPolicy;
       'api::price-package.price-package': ApiPricePackagePricePackage;
       'api::pricing-page.pricing-page': ApiPricingPagePricingPage;
       'api::privacy-policy-page.privacy-policy-page': ApiPrivacyPolicyPagePrivacyPolicyPage;

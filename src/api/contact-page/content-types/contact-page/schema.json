@@ -27,6 +27,16 @@
         "section-heading.section-heading",
         "page-components.contact-lead-section"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }

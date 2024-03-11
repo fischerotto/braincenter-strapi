@@ -4,7 +4,8 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "HomePage"
+    "displayName": "HomePage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -31,6 +32,16 @@
         "page-components.nf-technology-section",
         "page-components.contact-section"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo"
     }
   }
 }
