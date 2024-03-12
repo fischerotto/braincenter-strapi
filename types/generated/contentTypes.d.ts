@@ -724,6 +724,63 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface PluginTranslateBatchTranslateJob
+  extends Schema.CollectionType {
+  collectionName: 'translate_batch_translate_jobs';
+  info: {
+    singularName: 'batch-translate-job';
+    pluralName: 'batch-translate-jobs';
+    displayName: 'Translate Batch Translate Job';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    contentType: Attribute.String;
+    sourceLocale: Attribute.String;
+    targetLocale: Attribute.String;
+    entityIds: Attribute.JSON;
+    status: Attribute.Enumeration<
+      [
+        'created',
+        'setup',
+        'running',
+        'paused',
+        'finished',
+        'cancelled',
+        'failed'
+      ]
+    > &
+      Attribute.DefaultTo<'created'>;
+    failureReason: Attribute.JSON;
+    progress: Attribute.Float & Attribute.DefaultTo<0>;
+    autoPublish: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::translate.batch-translate-job',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::translate.batch-translate-job',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -1276,6 +1333,41 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       'api::home-page.home-page'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiIncomingContactIncomingContact
+  extends Schema.CollectionType {
+  collectionName: 'incoming_contacts';
+  info: {
+    singularName: 'incoming-contact';
+    pluralName: 'incoming-contacts';
+    displayName: 'IncomingContact';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    email: Attribute.String;
+    phone_number: Attribute.String;
+    message: Attribute.Text;
+    type_of_contact: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::incoming-contact.incoming-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::incoming-contact.incoming-contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1941,6 +2033,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'plugin::translate.batch-translate-job': PluginTranslateBatchTranslateJob;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
@@ -1950,6 +2043,7 @@ declare module '@strapi/types' {
       'api::cookie-policy-page.cookie-policy-page': ApiCookiePolicyPageCookiePolicyPage;
       'api::footer.footer': ApiFooterFooter;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::incoming-contact.incoming-contact': ApiIncomingContactIncomingContact;
       'api::main-menu.main-menu': ApiMainMenuMainMenu;
       'api::offer.offer': ApiOfferOffer;
       'api::policy.policy': ApiPolicyPolicy;
